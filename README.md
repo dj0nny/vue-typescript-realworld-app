@@ -4,7 +4,7 @@
 
 ![Vue Typescript](https://raw.githubusercontent.com/dj0nny/vue-typescript-realworld-app/develop/public/vuets.png?token=AEFKFPB4TLLVTGOFCSKLU5K433J2I)
 
-
+[![Build Status](https://travis-ci.org/dj0nny/vue-typescript-realworld-app.svg?branch=develop)](https://travis-ci.org/dj0nny/vue-typescript-realworld-app)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 [![npm version](https://badge.fury.io/js/vue.svg)](https://badge.fury.io/js/vue)
 [![npm version](https://badge.fury.io/js/typescript.svg)](https://badge.fury.io/js/typescript)
