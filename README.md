@@ -4,7 +4,6 @@
 
 ![Vue Typescript](https://raw.githubusercontent.com/dj0nny/vue-typescript-realworld-app/develop/public/vuets.png?token=AEFKFPB4TLLVTGOFCSKLU5K433J2I)
 
-# typegraphql-by-examples
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 [![npm version](https://badge.fury.io/js/vue.svg)](https://badge.fury.io/js/vue)
@@ -13,7 +12,9 @@
 
 ## Why Vue and TypeScript?
 
+__Vue.js__ is one of the most popular Javascript frameworks. After the release of version 3 of the Vue CLI, it is now possible to integrate __Typescript__ into a Vue app.
 
+Instead of doing the classic *To-do list* demo, I choose to develop an app based on [RealWorld app](https://github.com/gothinkster/realworld), which requires professional knowledge, as well as showing the main features to the beginners
 
 ## Getting Started
 
@@ -40,7 +41,7 @@ npm run serve
 # OR
 yarn serve
 ```
-for running the deployment server. It will be up and running at this address: http://localhost:8080.
+for running the Vue.js server. It will be up and running at this address: http://localhost:8080.
 
 ## Deployment
 
