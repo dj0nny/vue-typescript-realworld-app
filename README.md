@@ -67,9 +67,12 @@ You can see a deployed version of this appliction here: __https://vigilant-mccli
 
 - [x] Initial setup
 - [x] Fetch articles
-- [ ] Login / Register
+- [x] Login
+- [x] Profile page
 - [ ] Edit profile
 - [ ] Add new article
+- [ ] Find article by tag
+- [ ] Register
 
 ...and other 😄
 
