@@ -63,7 +63,7 @@ yarn build
 ## Next Version
 
 - [x] Initial setup
-- [ ] Fetch articles
+- [x] Fetch articles
 - [ ] Login / Register
 - [ ] Edit profile
 - [ ] Add new article
