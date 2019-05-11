@@ -13,14 +13,14 @@
             <li>Invalid username or password</li>
           </ul>
 
-          <form>
+          <form @submit.prevent="login" @keydown.prevent.enter>
             <fieldset class="form-group">
               <input v-model="email" class="form-control form-control-lg" type="text" placeholder="Email">
             </fieldset>
             <fieldset class="form-group">
               <input v-model="password" class="form-control form-control-lg" type="password" placeholder="Password">
             </fieldset>
-            <button @click="login()" class="btn btn-lg btn-primary pull-xs-right">
+            <button type="submit" class="btn btn-lg btn-primary pull-xs-right">
               Sign up
             </button>
           </form>
@@ -41,8 +41,8 @@ export default class Login extends Vue {
  password = ''
  loginError = ''
  
- async login() {
-   await users.login({
+ login() {
+   users.login({
      email: this.email,
      password: this.password
    }).then(() => {
