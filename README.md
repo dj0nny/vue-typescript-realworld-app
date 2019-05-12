@@ -70,7 +70,7 @@ You can see a deployed version of this appliction here: __https://vigilant-mccli
 - [x] Login
 - [x] Profile page
 - [x] Edit profile
-- [ ] Fetch tags list 
+- [x] Fetch tags list 
 - [ ] Filter articles by tag
 - [ ] Add new article
 - [ ] Register
