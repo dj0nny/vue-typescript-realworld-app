@@ -32,14 +32,7 @@
             <p>Popular Tags</p>
 
             <div class="tag-list">
-              <a href="" class="tag-pill tag-default">programming</a>
-              <a href="" class="tag-pill tag-default">javascript</a>
-              <a href="" class="tag-pill tag-default">emberjs</a>
-              <a href="" class="tag-pill tag-default">angularjs</a>
-              <a href="" class="tag-pill tag-default">react</a>
-              <a href="" class="tag-pill tag-default">mean</a>
-              <a href="" class="tag-pill tag-default">node</a>
-              <a href="" class="tag-pill tag-default">rails</a>
+              <TagItem v-for="tag in tags" :key="tag" :tag="tag"></TagItem>
             </div>
           </div>
         </div>
@@ -53,21 +46,29 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import articles from '@/store/modules/articles'
-import { Article } from '@/store/models'
+import tags from '@/store/modules/tags'
+import { Article, Tag } from '@/store/models'
 
 import ArticlePreview from '@/components/ArticlePreview.vue'
+import TagItem from '@/components/TagItem.vue'
 
 @Component({
   components: {
-    ArticlePreview
+    ArticlePreview,
+    TagItem
   }
 })
 export default class Home extends Vue {
   feed: Article[] = []
+  tags: Tag[] = []
 
   async created() {
     await articles.refreshFeed('global').then(() => {
       this.feed = articles.feed
+    })
+
+    await tags.getTags().then(() => {
+      this.tags = tags.tags
     })
   }
 

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ArticlesResponse, UserSubmit, UserResponse, User, Profile, ProfileResponse, UserForUpdate } from './models';
+import { ArticlesResponse, UserSubmit, UserResponse, User, Profile, ProfileResponse, UserForUpdate, Tag, TagResponse } from './models';
 
 export const conduitAPI = axios.create({
   baseURL: 'https://conduit.productionready.io/api'
@@ -38,4 +38,9 @@ export async function fetchUser(): Promise<User> {
 export async function updateUser(user: UserForUpdate) {
   const res = await conduitAPI.put('/user', user)
   return res.data as User
+}
+
+export async function fetchTags() {
+  const res = await conduitAPI.get('/tags')
+  return res.data as TagResponse
 }

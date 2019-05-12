@@ -41,6 +41,10 @@ export interface Author {
   following: boolean;
 }
 
+export interface Tag {
+  name: string
+}
+
 export interface UserSubmit {
   email: string,
   password: string
@@ -53,6 +57,11 @@ export interface UserResponse {
 export interface ProfileResponse {
   profile: Profile
 }
+
+export interface TagResponse {
+  tags?: (Tag)[] | null;
+}
+
 
 export interface ArticlesResponse {
   articles?: (Article)[] | null;
