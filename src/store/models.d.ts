@@ -10,7 +10,15 @@ export interface User {
   token: string;
   username: string;
   bio?: string;
-  image?: null;
+  image?: string;
+}
+
+export interface UserForUpdate {
+  email?: string
+  username?: string
+  bio?: string
+  password?: string
+  image?: string
 }
 
 export interface Article {

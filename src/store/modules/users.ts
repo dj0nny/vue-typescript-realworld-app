@@ -1,7 +1,7 @@
 import { VuexModule, Module, getModule, Mutation, Action } from 'vuex-module-decorators'
 import store from '@/store'
-import { User, Profile, UserSubmit } from '../models';
-import { loginUser, fetchProfile } from '../api';
+import { User, Profile, UserSubmit, UserForUpdate } from '../models';
+import { loginUser, fetchProfile, updateUser, setJWT, fetchUser } from '../api';
 
 @Module({
   dynamic: true,
@@ -14,13 +14,23 @@ class UsersModule extends VuexModule {
   profile: Profile | null = null
 
   @Mutation
-  SET_USER (user: User) {
+  SET_USER(user: User) {
     this.user = user
   }
 
   @Mutation
-  SET_PROFILE (profile: Profile) {
+  SET_PROFILE(profile: Profile) {
     this.profile = profile 
+  }
+
+  @Mutation
+  UPDATE_USER(user: User) {
+    this.user = user
+  }
+
+  @Mutation
+  LOAD_USER(user: User) {
+    this.user = user
   }
 
   get username() {
@@ -31,6 +41,7 @@ class UsersModule extends VuexModule {
   async login(userSubmit: UserSubmit) {
     try {
       const user = await loginUser(userSubmit)
+      setJWT(user.token)
       return user
     } catch (e) {
       throw new Error('Invalid username or password')
@@ -43,6 +54,17 @@ class UsersModule extends VuexModule {
     return profile
   }
 
+  @Action({ commit: 'UPDATE_USER' })
+  async updateSelfProfile(userUpdateFields: UserForUpdate) {
+    const user = await updateUser(userUpdateFields)
+    return user
+  }
+
+  @Action({ commit: 'LOAD_USER' })
+  async loadUser() {
+    const user = await fetchUser()
+    return user
+  }
 }
 
 export default getModule(UsersModule)
