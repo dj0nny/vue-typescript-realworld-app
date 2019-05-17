@@ -25,7 +25,7 @@ For this project you need [__Node__](https://nodejs.org/en/) installed on your m
 
 You can clone this repository using __Git__:
 ```bash
-https://github.com/dj0nny/vue-typescript-realworld-app.git
+git clone https://github.com/dj0nny/vue-typescript-realworld-app.git
 ```
 Or download the repository [here](https://github.com/dj0nny/vue-typescript-realworld-app/archive/develop.zip)
 
@@ -61,7 +61,7 @@ You can see a deployed version of this appliction here: __https://vigilant-mccli
 * [TypeScript](https://www.typescriptlang.org/) - Javascript based-type language
 * [Vuex](https://vuex.vuejs.org/) - Centralized State Management for Vue.js
 * [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) - Typescript decorators for Vue.js components
-* [vuex-module-decorators]() - Typescript decorators for Vuex
+* [vuex-module-decorators](https://github.com/championswimmer/vuex-module-decorators) - Typescript decorators for Vuex
 
 ## Next Version
 
