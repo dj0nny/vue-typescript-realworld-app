@@ -45,6 +45,10 @@ export interface Tag {
   name: string
 }
 
+export interface UserSession {
+  
+}
+
 export interface UserSubmit {
   email: string,
   password: string
@@ -62,9 +66,7 @@ export interface TagResponse {
   tags?: (Tag)[] | null;
 }
 
-
 export interface ArticlesResponse {
   articles?: (Article)[] | null;
   articlesCount: number;
 }
-

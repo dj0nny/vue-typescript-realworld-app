@@ -92,6 +92,7 @@ import users from '@/store/modules/users'
 
 @Component
 export default class Profile extends Vue {
+
   created() {
     users.loadProfile(this.$route.params.username)
   }
@@ -99,6 +100,11 @@ export default class Profile extends Vue {
   get profile() {
     return users.profile
   }
+
+  get logged()  {
+    return users.userSession
+  }
+
 }
 </script>
 

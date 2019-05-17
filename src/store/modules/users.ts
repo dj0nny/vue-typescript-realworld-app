@@ -11,7 +11,8 @@ import { loginUser, fetchProfile, updateUser, setJWT, fetchUser } from '../api';
 })
 class UsersModule extends VuexModule {
   user: User | null = null
-  profile: Profile | null = null
+  profile: Profile | null = null 
+  userSession: any | null = null
 
   @Mutation
   SET_USER(user: User) {
@@ -24,6 +25,11 @@ class UsersModule extends VuexModule {
   }
 
   @Mutation
+  CHECK_LOGIN(initialState: any) {
+    this.userSession = initialState
+  }
+
+  @Mutation
   UPDATE_USER(user: User) {
     this.user = user
   }
@@ -33,6 +39,15 @@ class UsersModule extends VuexModule {
     this.user = user
   }
 
+  // @Mutation
+  // LOGOUT() {
+  //   const resetState = {
+  //     status: {},
+  //     userLogged: false
+  //   }
+  //   this.userSession = resetState
+  // }
+
   get username() {
     return this.user && this.user.username || null
   }
@@ -41,7 +56,9 @@ class UsersModule extends VuexModule {
   async login(userSubmit: UserSubmit) {
     try {
       const user = await loginUser(userSubmit)
-      setJWT(user.token)
+      if(user.token) {
+        localStorage.setItem('user', JSON.stringify(user))
+      }
       return user
     } catch (e) {
       throw new Error('Invalid username or password')
@@ -52,6 +69,35 @@ class UsersModule extends VuexModule {
   async loadProfile(username: string) {
     const profile = await fetchProfile(username)
     return profile
+  }
+
+  @Action({ commit: 'CHECK_LOGIN' })
+  checkSession() {
+    let userLogged: any | null = localStorage.getItem('user')
+    // console.log(userLogged)
+    let initialState: any
+    userLogged = JSON.parse(userLogged)
+
+    if(userLogged) {
+      initialState = {
+        status: {
+          loggedIn: true
+        },
+        userLogged
+      }
+    } else {
+      initialState = {
+        status: {},
+        userLogged: false
+      }
+    }
+
+    return initialState
+  }
+
+  @Action({})
+  logout() {
+    localStorage.removeItem('user')
   }
 
   @Action({ commit: 'UPDATE_USER' })
@@ -65,6 +111,7 @@ class UsersModule extends VuexModule {
     const user = await fetchUser()
     return user
   }
+
 }
 
 export default getModule(UsersModule)

@@ -47,6 +47,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 import articles from '@/store/modules/articles'
 import tags from '@/store/modules/tags'
+import users from '@/store/modules/users'
 import { Article, Tag } from '@/store/models'
 
 import ArticlePreview from '@/components/ArticlePreview.vue'
@@ -70,8 +71,9 @@ export default class Home extends Vue {
     await tags.getTags().then(() => {
       this.tags = tags.tags
     })
-  }
 
+    users.checkSession()
+  }
 }
 
 </script>

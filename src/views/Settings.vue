@@ -28,6 +28,13 @@
                 </button>
             </fieldset>
           </form>
+
+          <hr>
+
+          <button @click="handleLogout()" class="btn btn-outline-danger">
+            Or click here to logout.
+          </button>
+
         </div>
 
       </div>
@@ -45,8 +52,9 @@ export default class Settings extends Vue {
   user: Partial<User> = {}
 
   async created() {
-    await users.loadUser()
-    this.user = users.user || {}
+    await users.checkSession()
+    // await users.loadUser()
+    this.user = users.userSession.userLogged || {}
   }
 
   async updateProfile() {
@@ -56,7 +64,13 @@ export default class Settings extends Vue {
       bio: this.user.bio,
       image: this.user.image
     })
-    this.user = users.user || {}
+    this.user = users.userSession.userLogged || {}
   }
+
+  handleLogout() {
+    users.logout()
+    this.$router.push('/')
+  }
+
 }
 </script>
